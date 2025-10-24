@@ -4,8 +4,9 @@ import RightArrowIcon from "./RightArrowIcon";
 import BottomArrowIcon from "./Bottom";
 import FileExtension from "./FileExtension";
 import { useDispatch, useSelector } from "react-redux";
-import { setTabsFile } from "../../app/features/fileTreeSlice";
+import {setClickedFile, setTabsFile } from "../../app/features/fileTreeSlice";
 import type { RootState } from "../../app/store";
+import { ifFileExit } from "../../utils/function";
 
 interface IProps {
    fileTree : IFile , 
@@ -14,11 +15,18 @@ interface IProps {
 
 const FileComponent = ({fileTree} : IProps) => {
     // Recursive 
-    const { name , isFolder , children} = fileTree ; 
+    const {id ,  name , isFolder , children , content} = fileTree ; 
     const dispatch = useDispatch() ; 
     const {tabsFile} = useSelector((state : RootState) => state.tree)
     const [isOpen , setIsOpen] = useState<boolean>(false) ; 
     const toggle =  () => setIsOpen(prev => !prev) ; 
+    const onClickFileHandler = () => {
+        const exits = ifFileExit(tabsFile , id) ; 
+        dispatch(setClickedFile({filename  : name, fileContent : content , activeTabId: id})) ; 
+        if (exits) return ; 
+        dispatch(setTabsFile([...tabsFile  , fileTree])) 
+       dispatch(setClickedFile({filename  : name, fileContent : content , activeTabId: id})) ;
+    }
     return (
         <div className="mb-2 ml-2">
             <div className="flex items-center mb-2 cursor-pointer"> 
@@ -31,7 +39,7 @@ const FileComponent = ({fileTree} : IProps) => {
                         </div>
                     ) : 
                     (
-                        <div className="flex items-center mr-2" onClick={() => dispatch(setTabsFile([...tabsFile  , fileTree]))} >
+                        <div className="flex items-center mr-2" onClick={onClickFileHandler} >
                             <FileExtension filename= {name}/>
                         <span className="ml-2"> {name}</span> 
                         </div>
