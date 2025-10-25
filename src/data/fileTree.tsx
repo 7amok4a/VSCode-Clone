@@ -19,7 +19,12 @@ export const fileTree: IFile = {
             {
               id : uuid() , 
               name : "index.js" , 
-              isFolder : false 
+              isFolder : false , 
+              content : `var x = 0 ; 
+var y = 1 ; 
+for (int i = 0 ; i < 23 ; ++i) {
+      x += 3 , y += 4 ; 
+}`
             }
           ]
 
@@ -65,6 +70,23 @@ export default App
               id: uuid(),
               name: "index.html",
               isFolder: false,
+              content : `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basic HTML + JS</title>
+</head>
+<body>
+  <h1>Hello — HTML + JS</h1>
+  <p id="message">Click the button to change this text.</p>
+  <button id="btn">Click me</button>
+
+  <!-- Link to plain JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
+`
             },
           ],
         },
