@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# VSCode-Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clone of Visual Studio Code built with React + TypeScript + Vite, replicating core features of the popular code editor.
 
-Currently, two official plugins are available:
+## 🧩 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project aims to replicate the core UX and functionality of Visual Studio Code: editor panes, tabs, file tree, syntax highlighting, etc. It is built using:
 
-## React Compiler
+* React (frontend UI)
+* TypeScript (type safety)
+* Vite (fast build/dev tooling)
+* HTML/CSS for layout and styling
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✅ Key Features
 
-## Expanding the ESLint configuration
+* Editor component supporting multiple tabs
+* File explorer / tree view
+* Syntax highlighting for major languages
+* Split-view / multiple panes support
+* Custom theming / dark & light mode
+* Basic keyboard shortcut support
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Node.js (≥ 12.x)
+* npm or yarn
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+```bash
+git clone https://github.com/7amok4a/VSCode-Clone.git  
+cd VSCode-Clone  
+npm install       # or yarn  
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running in Development Mode
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev       # or yarn dev  
 ```
+
+This will launch the app in your browser with hot module reloading.
+
+### Build for Production
+
+```bash
+npm run build  
+```
+
+Outputs optimized build files, ready for deployment.
+
+## 🔧 Project Structure
+
+```
+/public           → static assets (icons, fonts, index.html)  
+/src              → main source code  
+    /components   → reusable React components  
+    /editor       → core editor & tab logic  
+    /theme        → theming and styling  
+vite.config.ts    → Vite configuration  
+tsconfig.json     → TypeScript settings  
+```
+
+## 📌 Why This Project?
+
+* A strong learning exercise for React, TypeScript, and build tools.
+* Gives insight into how a modern code editor is structured.
+* Enables experimentation: you can add features (extensions, linting, …).
+* Great reference for building your own developer tools UI (especially fitting for someone with your AI/algorithms background).
+
+## 🛠️ Roadmap & Future Enhancements
+
+* Add plugin/extension architecture (like VS Code).
+* Integrate terminal emulator pane.
+* Add git integration & file versioning.
+* Improve performance for large files.
+* Add more keyboard shortcuts and UX polish.
+
+## 📝 Contribution
+
+Contributions are welcome! If you want to add a feature or fix a bug, please:
+
+1. Fork the repository.
+2. Create a branch (`feature/my-cool-feature`).
+3. Make your changes and add tests if possible.
+4. Open a Pull Request with a clear description of your changes.
+
